@@ -1,0 +1,11 @@
+.video-uploaded {
+  display: block;
+  width: 300px;
+  height: 200px;
+}
+
+.src-thumbnail-path {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

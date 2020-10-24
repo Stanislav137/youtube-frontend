@@ -1,0 +1,16 @@
+<h4>Update video</h4>
+<mat-form-field class="example-full-width">
+  <mat-label>Title of the video</mat-label>
+  <input matInput placeholder="" value="" type="text" [(ngModel)]="title" />
+  <button mat-button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" (click)="title=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<div style="margin-bottom: 10px">
+  <label>Choose thumbnail</label>
+  <input style="display: block; margin-bottom: 10px" type="file" (change)="readImgUrl($event)">
+
+  <img #imageElement class="src-thumbnail-path" *ngIf="imgUrl" width="320" height="240" [attr.src]="imgUrl" alt=""/>
+</div>
+<button mat-raised-button color="primary" (click)="updateVideo()">Save</button>
+

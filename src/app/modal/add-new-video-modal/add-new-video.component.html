@@ -1,0 +1,30 @@
+<h4>Upload video</h4>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Title of the video</mat-label>
+  <input matInput placeholder="" value="" type="text" [(ngModel)]="title" />
+</mat-form-field>
+<br>
+<input type="file" (change)="readVideoUrl($event)">
+
+<p *ngIf="videoSizeError">Too big</p>
+
+<video #video style="display: none;" *ngIf="videoUrl" width="320" height="240" controls [attr.src]="videoUrl" (loadedmetadata)="getDuration($event)">
+</video>
+
+<div *ngIf="videoUrl">
+  <video class="video-uploaded" controls preload="auto" data-config="some-js-object-here">
+    <source [src]="videoUrl" type='video/mp4'>
+  </video>
+  <p>Video duration: {{getVideoDuration()}}</p>
+  <p>Video uploaded: {{date}}</p>
+
+  <label>Choose thumbnail</label>
+  <input style="display: block; margin-bottom: 10px" type="file" (change)="readImgUrl($event)">
+
+  <img #imageElement class="src-thumbnail-path" *ngIf="imgUrl" width="320" height="240" [attr.src]="imgUrl" alt=""/>
+
+  <button mat-raised-button color="primary" (click)="saveVideo()">Save</button>
+
+  <h5 style="color: red; margin-top: 10px" *ngIf="error">Ops! Something is wrong!!!</h5>
+</div>
